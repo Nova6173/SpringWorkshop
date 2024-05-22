@@ -58,6 +58,10 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student edit(Student student) {
+        if (student == null) {
+            System.out.println("Student not found");
+            return null;
+        }
         System.out.println("Editing student name: " + student.getName());
         System.out.println("Enter new name: ");
         String name = userInputService.getString();
