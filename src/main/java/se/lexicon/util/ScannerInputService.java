@@ -14,6 +14,16 @@ public class ScannerInputService implements UserInputService {
         this.scanner = scanner;
     }
 
+    @Override
+    public int getInt() {
+        return scanner.nextInt();
+    }
+
+    @Override
+    public String getString() {
+        return "";
+    }
+
 
     @Override
     public String getString(String message) {
@@ -21,12 +31,16 @@ public class ScannerInputService implements UserInputService {
     }
 
     @Override
-    public int getInt(String message) {
+    public int getInt(String message)
+    {
         return scanner.nextInt();
     }
 
 
-
-
-
 }
+
+
+
+
+
+

@@ -27,7 +27,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
         Student newStudent = new Student();
         newStudent.setName(name);
         studentDao.save(newStudent);
-        System.out.println("Updated student name:" + studentDao.find(1).getName());
+        System.out.println("Updated student name:" + studentDao.find(newStudent.getId()).getName());
         return newStudent;
     }
 

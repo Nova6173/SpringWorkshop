@@ -1,18 +1,23 @@
 package se.lexicon;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import se.lexicon.config.ComponentScanConfig;
 import se.lexicon.data_access.StudentDao;
 import se.lexicon.model.Student;
 import se.lexicon.service.StudentManagement;
 import se.lexicon.util.UserInputService;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 
-        StudentDao studentDao = (StudentDao) context.getBean(UserInputService.class);
+        //Create a new context
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
+        context.register(ComponentScanConfig.class);
+        context.refresh();
+
+        //Get beans
+        StudentDao studentDao = context.getBean(StudentDao.class);
         UserInputService userInputService = context.getBean(UserInputService.class);
         StudentManagement studentManagement = context.getBean(StudentManagement.class);
 
@@ -52,7 +57,7 @@ public class Main {
         studentDao.save(student);
 
         //Test
-        Student found = studentDao.find(1);
+        Student found = studentDao.find(2);
         if(found != null){
             System.out.println(found.getName());
 
