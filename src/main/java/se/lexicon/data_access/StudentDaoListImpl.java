@@ -15,6 +15,7 @@ public class StudentDaoListImpl implements StudentDao {
 
     @Override
     public Student find(int id) {
+        System.out.println("Finding student with ID: " + id);
         return students.stream()
                 .filter(student -> student.getId() == id)
                 .findFirst()
@@ -23,6 +24,7 @@ public class StudentDaoListImpl implements StudentDao {
 
     @Override
     public Student save(Student student) {
+        System.out.println("Saving student with ID: " + student.getId() + ", Name: " + student.getName());
         Optional<Student> existingStudent = students.stream()
                 .filter(s -> s.getId() == student.getId())
                 .findFirst();
@@ -41,6 +43,7 @@ public class StudentDaoListImpl implements StudentDao {
 
     @Override
     public void delete(int id) {
+        System.out.println("Deleting student with ID: " + id);
         students.removeIf(student -> student.getId() == id);
     }
 }
