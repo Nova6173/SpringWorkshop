@@ -16,23 +16,33 @@ public class ScannerInputService implements UserInputService {
 
     @Override
     public int getInt() {
-        return scanner.nextInt();
+        while (!scanner.hasNextInt()){
+            System.out.println("invalid input. Please enter an integer");
+            scanner.next();
+        }
+        int value = scanner.nextInt();
+        scanner.nextLine();
+        return value;
     }
 
     @Override
     public String getString() {
-        return "";
+
+        return scanner.nextLine();
     }
 
 
     @Override
     public String getString(String message) {
+
+        System.out.println("message");
         return scanner.nextLine();
     }
 
     @Override
-    public int getInt(String message)
-    {
+    public int getInt(String message) {
+
+        System.out.println("message");
         return scanner.nextInt();
     }
 

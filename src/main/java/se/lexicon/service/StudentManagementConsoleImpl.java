@@ -23,12 +23,12 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student create() {
         System.out.println("Creating a new student: ");
-        String name = userInputService.getString();
-        Student newStudent = new Student();
-        newStudent.setName(name);
-        studentDao.save(newStudent);
-        System.out.println("Updated student name:" + studentDao.find(newStudent.getId()).getName());
-        return newStudent;
+        Student student = new Student();
+        System.out.println("Enter student ID: ");
+        student.setId(userInputService.getInt());
+        System.out.println("Enter student name: ");
+        student.setName(userInputService.getString());
+        return student;
     }
 
     @Override
